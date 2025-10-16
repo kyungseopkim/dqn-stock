@@ -134,3 +134,49 @@ python -m unittest discover tests -v
 python -m unittest tests.test_yfinance -v
 python -m unittest tests.test_alpaca -v
 ```
+## Architecture
+
+### Data Source Pattern
+
+All data sources implement the abstract `DataSource` interface:
+
+```python
+class DataSource(ABC):
+    @abstractmethod
+    def fetch_data(self, symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
+        """Fetch multi-day data"""
+        pass
+
+    @abstractmethod
+    def fetch_one_day_data(self, symbol: str, date: str, interval: str) -> pd.DataFrame:
+        """Fetch single-day data with specific interval"""
+        pass
+```
+
+### Project Structure
+
+```
+dqn_stock/
+ data_source/           # Data acquisition layer
+    data_source.py     # Abstract base class
+    yfinance.py        # Yahoo Finance implementation
+    alpaca.py          # Alpaca Markets implementation
+    database.py        # MySQL database implementation
+ examples/              # Usage examples
+    fetch_historical_data.py
+ tests/                 # Unit tests
+    test_yfinance.py
+    test_alpaca.py
+ indicators.py          # Technical indicator generation
+ main.py                # Application entry point
+ CLAUDE.md              # Development guide
+```
+
+## API Credentials
+
+### Alpaca Markets
+
+1. Sign up at [Alpaca Markets](https://app.alpaca.markets/)
+2. For paper trading: [Paper Dashboard](https://app.alpaca.markets/paper/dashboard/overview)
+3. Generate API keys in your dashboard
+4. Add to `.env` file
