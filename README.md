@@ -95,3 +95,42 @@ Powered by the `stockstats` library with support for:
 - **Trend**: MACD, Bollinger Bands, ADX
 - **Volume**: On Balance Volume (OBV)
 - **Volatility**: Average True Range (ATR)
+
+```python
+# Generate common indicators
+df_with_indicators = generate_technical_indicators(data)
+
+# Generate custom indicators
+df_custom = generate_custom_indicators(
+    data,
+    sma_periods=[10, 20, 50],
+    rsi_periods=[14, 21]
+)
+```
+
+## Examples
+
+Run the comprehensive data fetching example:
+
+```bash
+python examples/fetch_historical_data.py
+```
+
+This example demonstrates:
+- Single-day data fetching with multiple intervals
+- Multi-symbol performance comparison
+- Technical indicator integration
+- Error handling and data validation
+
+## Testing
+
+Run the complete test suite:
+
+```bash
+# Run all tests
+python -m unittest discover tests -v
+
+# Run specific data source tests
+python -m unittest tests.test_yfinance -v
+python -m unittest tests.test_alpaca -v
+```
