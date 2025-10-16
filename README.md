@@ -180,3 +180,45 @@ dqn_stock/
 2. For paper trading: [Paper Dashboard](https://app.alpaca.markets/paper/dashboard/overview)
 3. Generate API keys in your dashboard
 4. Add to `.env` file
+
+### Yahoo Finance
+
+No API credentials required. Uses the `yfinance` library which accesses Yahoo's public data.
+
+## Development
+
+### Adding New Data Sources
+
+1. Create a new class inheriting from `DataSource`
+2. Implement `fetch_data()` and `fetch_one_day_data()` methods
+3. Add error handling and data validation
+4. Create comprehensive unit tests
+5. Add to `data_source/__init__.py`
+
+### Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Add tests for new functionality
+4. Ensure all tests pass
+5. Submit a pull request
+
+## Roadmap
+
+- [ ] DQN model implementation
+- [ ] Real-time trading simulation
+- [ ] Additional data sources (IEX, Polygon)
+- [ ] Advanced technical indicators
+- [ ] Portfolio management features
+- [ ] Web-based dashboard
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For issues and questions:
+- Create an issue on GitHub
+- Check the examples directory for usage patterns
+- Review the test files for implementation details
