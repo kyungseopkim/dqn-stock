@@ -11,7 +11,11 @@ def convert_columns(df):
     for col in df.columns.values.tolist():
         new_df[col[0]] = df[col]
 
-    new_df.set_index("Datetime", inplace=True)
+    # Handle both 'Datetime' and 'Date' column names
+    if "Datetime" in new_df.columns:
+        new_df.set_index("Datetime", inplace=True)
+    elif "Date" in new_df.columns:
+        new_df.set_index("Date", inplace=True)
     return new_df
 
 class YFinanceDataSource(DataSource):
